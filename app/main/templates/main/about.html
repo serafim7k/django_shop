@@ -6,15 +6,16 @@
 {% endblock %}
 
 {% block content %}
-    <h2 class="mt-5 pt-5"><strong>{{ content }}</strong></h2>
-    <p>{{ some_text }}</p>
+    <div class="mt-5 pt-5 bg-white custom-shadow rounded">
+        <h2 class="mt-2"><strong>{{ content }}</strong></h2>
+        <p class="mt-2">{{ some_text_about }}</p>
+    </div>
 {% endblock %}
 
 {% block footer %}
     <footer class="py-4 bg-dark">
         <div class="container">
             <p class="m-0 text-center text-white">Copyright &copy; Home Python Hub Studio 2023</p>
-            
         </div>
     </footer>
 {% endblock %}

@@ -1,0 +1,3 @@
+python manage.py makemigrations | migrate
+python manage.py dumpdata goods.Categories > fixtures/goods/cats.json
+python manage.py loaddata fixtures/goods/cats.json
