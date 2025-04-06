@@ -4,12 +4,12 @@ from goods.models import Categories
 
 def index(request):
 
-    categories = Categories.objects.all()
+    # categories = Categories.objects.all()
 
     context = {
         'title': 'Home++',
         'content': 'Main shop page - Home++',
-        'categories': categories,
+        # 'categories': categories,
     }
     return render(request, 'main/index.html', context)
 
