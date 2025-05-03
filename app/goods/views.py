@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from goods.models import Products
+from django.core.paginator import Paginator
 
-def catalog(request, category_slug):
+def catalog(request, category_slug, page=1):
     
     if category_slug == 'all-products':
         goods = Products.objects.all()
@@ -10,10 +11,14 @@ def catalog(request, category_slug):
         goods = Products.objects.filter(category__slug = category_slug)
         if not goods:
             raise Http404
+        
+    paginator = Paginator(goods, 3)  # Paginate with 3 items per page
+    current_page = paginator.page(page)
     
     context = {
         'title': 'Home',
-        'goods': goods,
+        'goods': current_page,
+        'slug_url': category_slug,
     }
     return render(request, 'goods/catalog.html', context)
 
