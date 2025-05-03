@@ -1,10 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from goods.models import Products
 
-def catalog(request):
+def catalog(request, category_slug):
     
-    goods = Products.objects.all()
+    if category_slug == 'all-products':
+        goods = Products.objects.all()
+    else:
+        goods = Products.objects.filter(category__slug = category_slug)
+        if not goods:
+            raise Http404
     
     context = {
         'title': 'Home',
