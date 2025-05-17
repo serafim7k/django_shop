@@ -12,7 +12,7 @@ def catalog(request, category_slug, page=1):
         if not goods:
             raise Http404
         
-    paginator = Paginator(goods, 3)  # Paginate with 3 items per page
+    paginator = Paginator(goods, 1)  # Paginate with 3 items per page
     current_page = paginator.page(page)
     
     context = {
